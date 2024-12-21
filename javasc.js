@@ -48,7 +48,7 @@ const checkForWin = () => {
         let pos2 = boxes[pattern[1]].textContent;
         let pos3 = boxes[pattern[2]].textContent;
         if (pos1 && pos1 === pos2 && pos2 === pos3) {
-            showWinner(pos1);
+            showWinner(pos1,pattern);
             return true;
         }
     }
@@ -58,10 +58,13 @@ const checkForWin = () => {
 const isDraw = () => {
     return [...boxes].every((box) => box.textContent !== "");
 };
-const showWinner = (winner) => {
+const showWinner = (winner, winningPattern) => {
     const winnerName = winner === "X" ? playerXName : playerOName;
     msg.textContent = `${winnerName} wins!`;
     msgContainer.classList.remove("hide");
+    winningPattern.forEach((index) => {
+        boxes[index].classList.add("winning-row");
+    });
 };
 
 const showDraw = () => {
@@ -81,6 +84,10 @@ const resetGame = () => {
     msgContainer.classList.add("hide");
     turnX = true;
 };
+
+resetButton.addEventListener("click", resetGame);
+newGameBtn.addEventListener("click", resetGame);
+
 
 resetButton.addEventListener("click", resetGame);
 newGameBtn.addEventListener("click", resetGame);
