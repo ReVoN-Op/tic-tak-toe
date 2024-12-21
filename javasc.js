@@ -80,6 +80,7 @@ const resetGame = () => {
     boxes.forEach((box) => {
         box.textContent = "";
         box.disabled = false;
+        box.classList.remove("winning-row"); 
     });
     msgContainer.classList.add("hide");
     turnX = true;
