@@ -6,6 +6,9 @@ const buttons = document.querySelectorAll("button");
 let msg = document.querySelector("#msg");
 let turnX = true;
 
+let playerXName = prompt("Enter Player X Name:", "Player X") || "Player X";
+let playerOName = prompt("Enter Player O Name:", "Player O") || "Player O";
+
 const winPatterns = [
     [0, 1, 2],
     [0, 3, 6],
@@ -35,7 +38,7 @@ buttons.forEach((button) => {
         button.classList.add("glow-effect");
         setTimeout(() => {
             button.classList.remove("glow-effect");
-        }, 500); // Match the animation duration (0.5s)
+        }, 500); 
     });
 });
 
@@ -55,9 +58,9 @@ const checkForWin = () => {
 const isDraw = () => {
     return [...boxes].every((box) => box.textContent !== "");
 };
-
 const showWinner = (winner) => {
-    msg.textContent = `Player ${winner} wins!`;
+    const winnerName = winner === "X" ? playerXName : playerOName;
+    msg.textContent = `${winnerName} wins!`;
     msgContainer.classList.remove("hide");
 };
 
