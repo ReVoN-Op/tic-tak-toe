@@ -90,3 +90,21 @@ h1 {
 .glow-effect {
     animation: glow 0.5s ease-out;
 }
+.winning-row {
+    animation: glow-red 1s infinite alternate;
+}
+
+@keyframes glow-red {
+    0% {
+        background-color: #ffcccc;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    }
+    100% {
+        background-color: #ff9999;
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    }
+}
+
+.glow-effect {
+    animation: glow 0.5s ease-out;
+}
