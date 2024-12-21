@@ -2,6 +2,7 @@ let boxes = document.querySelectorAll(".box");
 let resetButton = document.querySelector("#reset-button");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
+const buttons = document.querySelectorAll("button");
 let msg = document.querySelector("#msg");
 let turnX = true;
 
@@ -24,7 +25,17 @@ boxes.forEach((box, index) => {
         box.disabled = true;
         if (checkForWin()) {
             disableAllBoxes();
+        } else if (isDraw()) {
+            showDraw();
         }
+    });
+});
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        button.classList.add("glow-effect");
+        setTimeout(() => {
+            button.classList.remove("glow-effect");
+        }, 500); // Match the animation duration (0.5s)
     });
 });
 
@@ -41,8 +52,17 @@ const checkForWin = () => {
     return false;
 };
 
+const isDraw = () => {
+    return [...boxes].every((box) => box.textContent !== "");
+};
+
 const showWinner = (winner) => {
     msg.textContent = `Player ${winner} wins!`;
+    msgContainer.classList.remove("hide");
+};
+
+const showDraw = () => {
+    msg.textContent = "It's a draw!";
     msgContainer.classList.remove("hide");
 };
 
@@ -61,3 +81,4 @@ const resetGame = () => {
 
 resetButton.addEventListener("click", resetGame);
 newGameBtn.addEventListener("click", resetGame);
+
