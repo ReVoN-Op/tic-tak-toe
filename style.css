@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 body {
     background-color: #8EB19D;
@@ -17,7 +18,6 @@ body {
     font-size: 2.5rem;
     color: white;
 }
-
 .game {
     height: 60vmin;
     width: 60vmin;
@@ -44,7 +44,7 @@ body {
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
 }
 
-#reset-button {
+#reset-button, #new-btn {
     padding: 1rem;
     font-size: 1rem;
     border-radius: 1rem;
@@ -52,14 +52,7 @@ body {
     background-color: #66B3BA;
     color: white;
 }
-#new-btn {
-    padding: 1rem;
-    font-size: 1rem;
-    border-radius: 1rem;
-    border: none;
-    background-color: #66B3BA;
-    color: white;
-}
+
 h1 {
     padding: 2vmin;
 }
@@ -75,36 +68,35 @@ h1 {
     font-family: 'Arial', sans-serif;
     font-weight: bold;
 }
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    }
-    50% {
-        box-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6);
-    }
-    100% {
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    }
-}
 
 .glow-effect {
-    animation: glow 0.5s ease-out;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6);
 }
+
 .winning-row {
-    animation: glow-red 1s infinite alternate;
+    background-color: #ff9999;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
 }
 
-@keyframes glow-red {
-    0% {
-        background-color: #ffcccc;
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+@media (max-width: 600px) {
+    #headd {
+        font-size: 2rem;
     }
-    100% {
-        background-color: #ff9999;
-        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    .game {
+        height: 80vmin;
+        width: 80vmin;
+        gap: 1vmin;
     }
-}
-
-.glow-effect {
-    animation: glow 0.5s ease-out;
+    .box {
+        height: 20vmin;
+        width: 20vmin;
+        font-size: 6vmin;
+    }
+    #reset-button, #new-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    #msg {
+        font-size: 1.5rem;
+    }
 }
